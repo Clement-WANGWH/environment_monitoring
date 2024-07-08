@@ -29,9 +29,9 @@ import java.util.UUID;
  * @author 王郝浠
  * @since 2023-09-04
  */
-@CrossOrigin
-@RestController
-@RequestMapping("/upload")
+//@CrossOrigin
+//@RestController
+//@RequestMapping("/upload")
 public class FileController {
 
 //    @Value("${pictureFile.path}")

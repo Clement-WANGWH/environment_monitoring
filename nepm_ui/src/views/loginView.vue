@@ -151,6 +151,7 @@ const submitForm = async (formEl) => {
       }
       )
       console.log(res);
+      console.log(res.code);
       if (res.code === 200) {
         let user = res.result
         let jsonstr = JSON.stringify(user)

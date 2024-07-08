@@ -20,7 +20,7 @@ const instance = axios.create({
   // 它可以通过设置一个 `baseURL` 便于为 axios 实例的方法传递相对 URL
   // 填写所有后台控制器的基地址，  理论上是项目名
 
-  baseURL: 'http://127.0.0.1:18081',
+  baseURL: 'http://127.0.0.1:8080',
   // 自定义请求头
   headers: {
     // 定义put提交的数据的格式 为JSON
@@ -117,6 +117,7 @@ instance.interceptors.response.use(
 
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
+    console.log(error)
     return Promise.reject(error)
   }
 )

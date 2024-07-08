@@ -25,12 +25,13 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>8.3.0</version>
-            <scope>runtime</scope>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.16</version>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
@@ -47,6 +48,7 @@
             <scope>test</scope>
         </dependency>
 
+
         <!--        添加JWT的依赖-->
         <!--引入jwt-->
         <dependency>
@@ -59,11 +61,12 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.3.0</version>
-        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.mybatis.spring.boot</groupId>-->
+<!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
+<!--            <version>2.3.0</version>-->
+<!--        </dependency>-->
         <!-- mybatis-plus-generator依赖（这里默认基于FreeMarker模板引擎） -->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -81,6 +84,8 @@
             <artifactId>spring-webmvc</artifactId>
             <version>5.3.24</version>
         </dependency>
+
+
 
     </dependencies>
     <dependencyManagement>

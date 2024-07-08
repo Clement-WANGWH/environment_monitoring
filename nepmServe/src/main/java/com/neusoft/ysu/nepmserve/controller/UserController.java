@@ -20,7 +20,7 @@ import java.util.HashMap;
  * @author 王郝浠
  * @since 2023-08-26
  */
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -83,6 +83,7 @@ public class UserController {
 
     @PostMapping ("/login")
     public CommonResult login(String loginName,String password) throws UnsupportedEncodingException {
+        System.out.println("UserController.login");
         return service.login(loginName,password);
     }
 }
