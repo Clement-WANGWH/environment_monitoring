@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.ysu.nepmserve.mapper.StatisticsMapper">
+
+    <resultMap id="statisticsMap" type="Statistics">
+        <id property="id" column="id"/>
+
+        <association property="gridman" javaType="User" column="gId"
+                     select="com.neusoft.ysu.nepmserve.mapper.UserMapper.selectById"/>
+
+        <association property="supervisor" javaType="User" column="sId"
+                     select="com.neusoft.ysu.nepmserve.mapper.UserMapper.selectById"/>
+
+        <association property="province" javaType="Grid" column="pId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+
+        <association property="city" javaType="Grid" column="cId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+
+        <association property="town" javaType="Grid" column="tId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+    </resultMap>
+
+    <select id="selectBySql" parameterType="StatisticsVo" resultMap="statisticsMap">
+        select * from statistics
+        <where>
+            <if test="pId!=null and pId!=''">
+                and pId=#{pId}
+            </if>
+            <if test="cId!=null and cId!=''">
+                and cId=#{cId}
+            </if>
+            <if test="tId!=null and tId!=''">
+                and tId=#{tId}
+            </if>
+            <if test="confirmDate!=null">
+                and confirmDate=#{confirmDate}
+            </if>
+        </where>
+        ORDER BY confirmDate DESC
+        limit #{start},#{pageSize}
+    </select>
+
+<!--    AQI分布统计-->
+    <select id="selectDistribution"  resultType="map">
+        SELECT a.id,a.category,c.count
+        FROM
+            (SELECT id,category
+             FROM aqi) as a
+                inner join
+            (SELECT aqiId,count(*) as count
+             FROM statistics
+             GROUP BY aqiId) as c
+            on a.id=c.aqiId
+    </select>
+
+<!--    AQI趋势统计-->
+    <select id="selectTrend" resultType="map">
+        SELECT months.months, COALESCE(nums.count, 0) AS nums
+        FROM (
+                 SELECT DATE_FORMAT(confirmDate,'%Y-%m') AS months
+                 FROM statistics
+                 group by months
+             ) AS months
+                 LEFT JOIN (
+            SELECT DATE_FORMAT(confirmDate,'%Y-%m') AS months, COUNT(*) AS count
+            FROM statistics
+            WHERE aqiId >= 3
+            GROUP BY months
+        ) AS nums
+                           ON months.months = nums.months;
+    </select>
+
+<!--    省分组统计结果-->
+    <select id="selectByProGroup" resultType="map">
+        select g.id,g.name,s.so2Level,s.coLevel,s.spmLevel,s.aqiId
+        from
+            (select distinct grid.id,grid.name
+             from grid,statistics
+             where grid.id=statistics.pId) as g
+                inner join
+            (SELECT pId,count(so2Level>=3 or null) so2Level,
+                    count(coLevel>=3 or null) coLevel,
+                    count(spmLevel>=3 or null) spmLevel,
+                    count(aqiId>=3 or null) aqiId
+             FROM statistics
+             GROUP BY pId) as s
+            on g.id=s.pId
+    </select>
+</mapper>

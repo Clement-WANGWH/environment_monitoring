@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.ysu.nepmserve.mapper.FeedbackMapper">
+
+    <resultMap id="feedbackMap" type="Feedback">
+        <id property="id" column="id"/>
+
+        <association property="aqi" javaType="Aqi" column="estimatedGrade"
+                     select="com.neusoft.ysu.nepmserve.mapper.AqiMapper.selectById"/>
+
+        <association property="supervisor" javaType="User" column="sId"
+                     select="com.neusoft.ysu.nepmserve.mapper.UserMapper.selectById"/>
+
+        <association property="grid" javaType="User" column="gId"
+                     select="com.neusoft.ysu.nepmserve.mapper.UserMapper.selectById"/>
+
+        <association property="province" javaType="Grid" column="pId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+
+        <association property="city" javaType="Grid" column="cId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+
+        <association property="town" javaType="Grid" column="tId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+<!--        &lt;!&ndash;公众监督员码表&ndash;&gt;-->
+<!--        <association property="supervisor" javaType="Supervisor" column="sId"-->
+<!--                     select="com.neusoft.ysu.nepmserve.mapper.SupervisorMapper.selectById"/>-->
+
+<!--        <association property="province" javaType="Province" column="pId"-->
+<!--                     select="com.neusoft.ysu.nepmserve.mapper.ProvinceMapper.selectById"/>-->
+
+<!--        <association property="city" javaType="City" column="cId"-->
+<!--                     select="com.neusoft.ysu.nepmserve.mapper.CityMapper.selectById"/>-->
+
+<!--        <association property="town" javaType="Town" column="tId"-->
+<!--                     select="com.neusoft.ysu.nepmserve.mapper.TownMapper.selectById"/>-->
+<!--        -->
+<!--        <association property="gridman" javaType="Gridman" column="gId"-->
+<!--                     select="com.neusoft.ysu.nepmserve.mapper.GridmanMapper.selectById"/>-->
+
+    </resultMap>
+
+    <select id="selectBySql" parameterType="FeedbackVo" resultMap="feedbackMap">
+        select * from feedback
+        <where>
+            <if test="tId!=null and tId!=''">
+                and tId=#{tId}
+            </if>
+            <if test="estimatedGrade!=null and estimatedGrade!=''">
+                and estimatedGrade=#{estimatedGrade}
+            </if>
+            <if test="fDate!=null">
+                and fDate=#{fDate}
+            </if>
+        </where>
+        ORDER BY id DESC
+        limit #{start},#{pageSize}
+    </select>
+    <select id="selectBySidByPage" parameterType="fVo" resultMap="feedbackMap">
+        select * from feedback where sId=#{sId}
+        ORDER BY fDate DESC
+        limit #{start},#{pageSize}
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neusoft.ysu.nepmserve.mapper.UserMapper">
+
+    <resultMap id="userMap" type="User">
+        <id property="id" column="id"/>
+
+        <association property="province" javaType="Grid" column="pId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+
+        <association property="city" javaType="Grid" column="cId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+
+        <association property="town" javaType="Grid" column="tId"
+                     select="com.neusoft.ysu.nepmserve.mapper.GridMapper.selectById"/>
+    </resultMap>
+</mapper>
