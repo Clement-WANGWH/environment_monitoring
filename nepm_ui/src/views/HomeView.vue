@@ -21,6 +21,7 @@
 </template>
 
 <script setup>
+
 import AsideMenu from '../components/home/AsideMenu.vue'
 import HomeHeader from '../components/home/HomeHeader.vue'
 import HomeBreadcrumb from '../components/home/HomeBreadcrumb.vue'
@@ -47,11 +48,11 @@ import HomeBreadcrumb from '../components/home/HomeBreadcrumb.vue'
 
         .el-header {
             height: 68px;
-            background-color: #95d475;
+            background-color: #2075cb;
         }
 
         .el-aside {
-            background-color: #b3e19d;
+            background-color: #3286da;
             width: 250px;
         }
     }

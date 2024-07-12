@@ -1,5 +1,16 @@
 <template>
     <el-card class="box-card">
+        <template #header>
+            <div class="card-header">
+                <div    v-if="roleId == 3"> 
+                        <div class="h">公众监督员端</div> 
+                    </div>
+                    <div   v-if="roleId == 2"> 
+                        <div class="h"> 网格员端</div>
+                       
+                    </div>
+            </div>
+        </template>
         <el-steps :active="active" finish-status="success" align-center space="200px"
             style="justify-content:center;margin-top:15px;">
             <el-step title="选择网格" />
@@ -145,6 +156,12 @@ import { useRouter } from 'vue-router'
 import { ElNotification } from 'element-plus'
 import AddressSelect from './addressSelect.vue';
 
+const username = ref('')
+
+username.value = JSON.parse(
+    sessionStorage.getItem('user')
+).username
+const roleId = sessionStorage.getItem('roleId')
 //步骤条
 const active = ref(0)
 
@@ -295,7 +312,16 @@ const tableRowClassName = ({ row, rowIndex }) => {
     align-items: center;
     justify-content: center;
 }
-
+.card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.h {
+    font-size: 25px;
+    margin-top: 15px;
+    
+}
 .selectGrid {
     width: 400px;
     /* position: absolute; */

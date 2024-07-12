@@ -165,10 +165,10 @@ const submitForm = async (formEl) => {
         sessionStorage.setItem('isNotified', false)
         // 使用编程式路由实现页面跳转
         if (user.roleId === 3) {
-          router.push('/IndividualCenter')
+          router.push('/reportView')
         }
         else if (user.roleId === 2) {
-          router.push('/IndividualCenter')
+          router.push('/MonitorTaskView')
         }
         else if (user.roleId === 1) {
           router.push('/ChinaCharts')

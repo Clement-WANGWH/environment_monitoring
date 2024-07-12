@@ -9,6 +9,7 @@ import 'element-plus/dist/index.css'
 // 创建一个 pinia（根存储）
 import { createPinia } from 'pinia'
 
+
 const app = createApp(App)
 // 将其传递给应用程序
 app.use(router).use(ElementPlus).use(createPinia())

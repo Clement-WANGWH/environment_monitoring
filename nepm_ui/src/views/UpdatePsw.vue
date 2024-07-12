@@ -2,11 +2,11 @@
     <el-card class="box-card">
         <template #header>
             <div class="card-header">
-                <h1 class="info">登录密码</h1>
+                <h1 class="info">设置密码</h1>
             </div>
         </template>
         <div class="registerwin">
-            <div class="h">请设置新密码</div>
+           
             <el-form :model="form" label-width="120px" ref="ruleFormRef" :rules="rules" :size="formSize" status-icon>
                 <div class="registerform">
                     <el-form-item label="用户名" prop="username">
@@ -19,7 +19,7 @@
                         <el-input type="password" v-model="form.checkPass" placeholder="确认密码" class="input" />
                     </el-form-item>
                     <el-form-item>
-                        <el-button @click="onSave(ruleFormRef)" :disabled="!password && !checkPass"
+                        <el-button @click="onSave(ruleFormRef)" 
                             style="margin-top: 15px;">保存</el-button>
                     </el-form-item>
 
