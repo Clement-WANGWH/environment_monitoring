@@ -13,9 +13,11 @@
                 <el-main>
                     <HomeBreadcrumb></HomeBreadcrumb>
                     <RouterView></RouterView>
+               
                     <!-- <ChinaCharts></ChinaCharts> -->
                 </el-main>
             </el-container>
+
         </el-container>
     </div>
 </template>
@@ -24,6 +26,7 @@
 import AsideMenu from '../components/home/AsideMenu.vue'
 import HomeHeader from '../components/home/HomeHeader.vue'
 import HomeBreadcrumb from '../components/home/HomeBreadcrumb.vue'
+import ProChartstable from '../components/chart/ProChartstable .vue';
 // import ChinaCharts from '../components/chart/ChinaCharts.vue';
 // const roleId = sessionStorage.getItem('roleId')
 </script>
@@ -36,6 +39,7 @@ import HomeBreadcrumb from '../components/home/HomeBreadcrumb.vue'
 
     // background-color:#b6f499;
     .page-container {
+        display: flex;
         width: 100%;
         height: 100%;
         // background-color:#b6f499;

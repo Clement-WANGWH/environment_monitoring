@@ -1,16 +1,23 @@
 <template>
-    <div class="container">
-        <el-card class="box-card">
-            <div id="chart" class="charts"></div>
-        </el-card>
+    <div class="chart-container">
+        <div id="chart1" class="chart-left"></div>
+        <div class="chart-right">
+            <pro-chartstable class="chart-right-item"></pro-chartstable>
+            <aqiDistributionchart class="chart-right-item"></aqiDistributionchart>
+            <aqiTrendchart class="chart-right-item"></aqiTrendchart>
+        </div>
     </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import $axios from '../utils/axios'
 import * as echarts from 'echarts';
 import ChinaMap from '@/assets/chinaChange.json';
+import ProChartstable from './ProChartstable .vue';
+import aqiDistributionchart from './aqiDistributionchart.vue';
+import aqiTrendchart from './aqiTrendcharts.vue';
 
 const tableData = ref()
 const initData = async () => {
@@ -28,7 +35,7 @@ onMounted(() => {
 })
 
 const initChart = () => {
-    const chart = echarts.init(document.getElementById('chart'));
+    const chart1 = echarts.init(document.getElementById('chart1'));
     echarts.registerMap('china', ChinaMap);
 
     const getColorByAQIId = (aqiId) => {
@@ -102,32 +109,41 @@ const initChart = () => {
         ]
     };
     // 使用刚指定的配置项和数据显示图表
-    chart.setOption(option);
+    chart1.setOption(option);
 }
 </script>
+
 <style scoped>
-.container {
+.chart-container {
     display: flex;
-    height: 95%;
+    height: 100vh; /* 使用视口高度确保全屏展示 */
+    width: 100%;
 }
 
-.box-card {
+.chart-left {
+    flex: 1;  /* 左侧图表占据1/2宽度 */
+    margin: 10px;
+    height: 100%;
+}
+
+.chart-right {
+    flex: 1;  /* 右侧图表占据1/2宽度 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    height: 100%;
+}
+
+.chart-right-item {
+    flex: 1;
+    margin-bottom: 10px;
+    height: 30%; /* 每个图表占据右侧容器的1/3高度 */
+   
+}
+
+#chart1 {
     width: 100%;
     height: 100%;
-    margin-top: 12px;
-    border-radius: 12px;
-    align-content: center;
-}
-
-#chart {
-    width: 75%;
-    height: 600px;
-    margin-top: 20px;
-}
-
-.charts {
-    /* width: 600px; */
-    /* height: 400px; */
-    margin-left: 150px;
 }
 </style>
