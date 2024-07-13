@@ -161,7 +161,6 @@
 	  router.push('/register')
 	}
 	
-	
 </script>
 
 <style scoped>
