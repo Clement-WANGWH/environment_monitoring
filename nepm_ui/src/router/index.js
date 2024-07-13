@@ -14,6 +14,16 @@ const router = createRouter({
           name: 'IndividualCenter',
           component: () => import('../views/IndividualCenter.vue')
         },
+		{//网格员个人中心
+			path: 'GridCenter',
+			name: 'GridCenter',
+			component: () => import('../views/GridCenter.vue')
+		},
+		{//监督员个人中心
+			path: 'SuperviseCenter',
+			name: 'SuperviseCenter',
+			component: () => import('../views/SuperviseCenter.vue')
+		},
         {//公众监督员提交反馈
           path: '/reportView',
           name: 'reportView',

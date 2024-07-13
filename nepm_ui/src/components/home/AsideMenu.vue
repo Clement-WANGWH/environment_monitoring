@@ -42,12 +42,18 @@
                 <span>网格数据管理</span>
             </template>
         </el-sub-menu>
-        <el-menu-item index="IndividualCenter" v-if="roleId == 3 || roleId == 2">
+        <el-menu-item index="GridCenter" v-if="roleId == 2">
             <el-icon>
                 <House />
             </el-icon>
             <span>个人中心</span>
         </el-menu-item>
+		<el-menu-item index="SuperviseCenter" v-if="roleId == 3">
+		    <el-icon>
+		        <House />
+		    </el-icon>
+		    <span>个人中心</span>
+		</el-menu-item>
         <el-sub-menu index="6" v-if="roleId == 3">
             <template #title>
                 <el-icon>
