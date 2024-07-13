@@ -59,6 +59,7 @@ const router = createRouter({
           path: '/ChinaCharts',
           name: 'ChinaCharts',
           component: () => import('../components/chart/ChinaCharts.vue')
+
         }, {//省分组统计
           path: '/ProvinceGroupView',
           name: 'ProvinceGroupView',

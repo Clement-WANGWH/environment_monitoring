@@ -1,12 +1,15 @@
-spring:
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/nep?useSSL=false&serverTimezone=UTC
-    username: root
-    password: root
-mybatis-plus:
-
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.neusoft.ysu.nepmserve.entity
-  configuration:
-    map-underscore-to-camel-case: false
+#
+#server:
+#  port: 80801
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/nep?useSSL=false&serverTimezone=UTC
+#    username: root
+#    password: root
+#mybatis-plus:
+#
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: com.neusoft.ysu.nepmserve.entity
+#  configuration:
+#    map-underscore-to-camel-case: false

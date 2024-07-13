@@ -21,7 +21,6 @@ public class GridController {
 
     @Autowired
     IGridService service;
-
     @GetMapping("/findProvince")
     public CommonResult findProvince(){
         return service.findProvince();

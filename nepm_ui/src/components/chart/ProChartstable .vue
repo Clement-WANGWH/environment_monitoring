@@ -1,25 +1,5 @@
 <template>
-    <div class="container">
-        <el-card class="box-card">
-            <template #header>
-                <div class="card-header">
-                    <span>省分组分项检查统计</span>
-                    <el-button class="button" text>刷新</el-button>
-                </div>
-            </template>
-            <div class="content">
-                <el-table :data="tableData" style="width: 45%" :row-class-name="tableRowClassName">
-                    <el-table-column prop="id" label="省编号" width="70px" />
-                    <el-table-column prop="name" label="省名称" width="80px" />
-                    <el-table-column prop="so2Level" label="SO2超标累计" width="110px" />
-                    <el-table-column prop="coLevel" label="CO超标累计" width="105px" />
-                    <el-table-column prop="spmLevel" label="PM2.5超标累计" width="125px" />
-                    <el-table-column prop="aqiId" label="AQI超标累计" width="110px" />
-                </el-table>
-                <div id="chart" class="echarts-container"></div>
-            </div>
-        </el-card>
-    </div>
+                <div id="chart2" class="echarts-container"></div>
 </template>
 
 <script setup>
@@ -42,9 +22,7 @@ onMounted(() => {
     init()
 })
 
-const tableRowClassName = ({ rowIndex }) => {
-    return rowIndex % 2 === 1 ? 'success-row' : ''
-}
+
 
 const drawChart = () => {
     const chartData = tableData.value.map(item => ({
@@ -55,7 +33,7 @@ const drawChart = () => {
         aqiId: item.aqiId
     }))
 
-    const chart = echarts.init(document.getElementById('chart'))
+    const chart2 = echarts.init(document.getElementById('chart2'))
     const option = {
         title: {
             text: '省分组检查统计',
@@ -112,57 +90,21 @@ const drawChart = () => {
             }
         ]
     }
-    chart.setOption(option)
+    chart2.setOption(option)
 }
 </script>
 
 <style scoped>
-.container {
-    display: flex;
-    height: 95%;
-}
 
-.box-card {
-    width: 100%;
-    height: 100%;
-    margin-top: 12px;
-    border-radius: 12px;
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.content {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    width: 100%;
-    height: 100%;
-}
 
 .echarts-container {
     width: 100%;
     height: 500px;
-    margin-left: 30px;
 }
 
-#chart {
+#chart2 {
     width: 100%;
     height: 500px;
-    margin-top: 12px;
     border-radius: 12px;
-}
-
-.button {
-    padding: 0;
-}
-</style>
-
-<style>
-.el-table .success-row {
-    --el-table-tr-bg-color: var(--el-color-success-light-9);
 }
 </style>
