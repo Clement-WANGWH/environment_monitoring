@@ -9,11 +9,6 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
       children: [
-        {//个人中心
-          path: 'IndividualCenter',
-          name: 'IndividualCenter',
-          component: () => import('../views/IndividualCenter.vue')
-        },
 		{//网格员个人中心
 			path: 'GridCenter',
 			name: 'GridCenter',
