@@ -26,7 +26,9 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      你好，{{ username }}
+      <div class="container">
+    {{ username }}
+      </div>
       <!-- <el-button :icon="SwitchButton" @click="toLogin">退出</el-button> -->
     </div>
   </div>
@@ -77,19 +79,23 @@ console.log(imgUrl);
 #homeheader {
   display: flex;
   justify-content: space-between;
+  // justify-content: center;
+  
 
   .logo {
     img {
       height: 68px;
     }
   }
-
+ 
   .title {
+    display: flex;
     p {
       line-height: 68px;
       font-family: '微软雅黑', Courier, monospace;
       font-size: 1.875rem;
       color: rgb(0, 0, 0);
+      
     }
   }
 }

@@ -10,7 +10,7 @@ public class MyGenerator {
 
     private static final String URL = "jdbc:mysql://localhost:3306/nepm?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "123456";
     private static final String PACKAGE_NAME = "com.neusoft.ysu.nepmserve";
     private static final String AUTHOR_NAME = "王郝浠";
     private static final String OUTDIR_JAVA = "E:\\whx\\21EnterpriseTrain\\nepm\\nepmServe\\src\\main\\java";

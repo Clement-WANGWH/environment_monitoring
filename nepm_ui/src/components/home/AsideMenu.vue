@@ -1,6 +1,6 @@
 <template>
     <!-- <el-button style="background-color: #b3e19d;" :icon="Fold" size="small" @click="isCollapse = !isCollapse" /> -->
-    <el-menu active-text-color="rgb(0,147,66)" background-color="#b3e19d" class="el-menu-vertical-demo" default-active="2"
+    <el-menu active-text-color="rgb(135,206,235)" background-color="#2075cb" class="el-menu-vertical-demo" default-active="2"
         text-color="#fff" @open="handleOpen" @close="handleClose" router :collapse="isCollapse">
         <el-sub-menu index="1" v-if="roleId == 1">
             <template #title>

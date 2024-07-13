@@ -2,7 +2,7 @@
     <el-card class="box-card">
         <template #header>
             <div class="card-header">
-                <span>反馈任务列表</span>
+                <span class="h">反馈任务列表---网格员端</span>
                 <el-button class="button" @click="init" text>刷新</el-button>
             </div>
         </template>
@@ -535,7 +535,11 @@ const cancelForm = () => {
     display: flex;
     align-items: center;
 }
-
+.h {
+    font-size: 25px;
+    margin-top: 15px;
+    
+}
 .margin-top {
     margin-top: 5px;
 }

@@ -7,7 +7,7 @@ import com.neusoft.ysu.nepmserve.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.neusoft.ysu.nepmserve.util.JWTUtil;
 import com.neusoft.ysu.nepmserve.util.common.CommonResult;
-import org.omg.CORBA.UserException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

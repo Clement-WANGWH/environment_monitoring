@@ -96,7 +96,10 @@ const handleChange = async (value) => {
     const path = '/grid/findTidByName/' + codeToText[value[2]]
     const { data: res } = await $axios.get(path)
     if (res.code === 200) {
+        alert("查找成功！")
         form.value.tId = res.result
+    }else{
+        alert("查找失败！")
     }
 }
 
