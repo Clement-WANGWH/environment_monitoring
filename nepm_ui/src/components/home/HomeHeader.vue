@@ -2,7 +2,7 @@
   <div id="homeheader">
     <div style="display: flex;">
       <div class="logo">
-        <img src="../../assets/img/nepmLogo.gif" />
+        <img src="../../assets/img/logo.png" />
       </div>
       <div class="title">
         <p>环保公众监督系统</p>
@@ -11,8 +11,9 @@
     <div style="display: flex;align-items: center;">
       <el-dropdown @command="handleCommand">
         <!-- http://localhost:18081/avatar/pangke.jpg -->
-        <el-avatar v-if="avatar == null" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
-        <el-avatar v-if="avatar !== null" :src="imgUrl" />
+		
+			<el-avatar :src="'/src/assets/img/avatar.png'" />
+		
         <el-button>
           Dropdown List<el-icon class="el-icon--right"><arrow-down /></el-icon>
         </el-button>
@@ -84,15 +85,16 @@ console.log(imgUrl);
 
   .logo {
     img {
-      height: 68px;
+      height: 50px;
+	  margin-top:10px;
     }
   }
  
   .title {
     display: flex;
+	margin-left:10px;
     p {
       line-height: 68px;
-      font-family: '微软雅黑', Courier, monospace;
       font-size: 1.875rem;
       color: rgb(0, 0, 0);
       
